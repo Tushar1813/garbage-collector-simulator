@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garbage Collector Simulator</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>Garbage Collector Simulator</h1>
+    <p>Visualize memory management and garbage collection algorithms</p>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="control-panel">
+        <div class="algorithm-selection">
+          <h2>GC Algorithm</h2>
+          <select id="gc-algorithm">
+            <option value="mark-sweep">Mark and Sweep</option>
+            <option value="generational">Generational</option>
+          </select>
+        </div>
+
+        <div class="memory-controls">
+          <h2>Memory Controls</h2>
+          <button id="allocate">Allocate Memory</button>
+          <button id="dereference">Dereference Selected</button>
+          <button id="run-gc">Run Garbage Collection</button>
+          <button id="compact">Compact Memory</button>
+          <button id="reset">Reset</button>
+        </div>
+
+        <div class="gc-settings">
+          <h2>GC Settings</h2>
+          <div class="setting">
+            <label for="auto-gc">Auto GC:</label>
+            <input type="checkbox" id="auto-gc">
+          </div>
+          <div class="setting">
+            <label for="threshold">Collect when memory is </label>
+            <input type="range" id="threshold" min="50" max="90" value="70">
+            <span id="threshold-value">70%</span> full
+          </div>
+        </div>
+      </div>
+
+      <div class="visualization-area">
+        <div class="memory-container">
+          <h2>Memory Map</h2>
+          <canvas id="memory-canvas" width="600" height="400"></canvas>
+        </div>
+
+        <div class="stats-dashboard">
+          <h2>Memory Stats</h2>
+          <div class="stat">
+            <span>Total Memory:</span>
+            <span id="total-memory">100 blocks</span>
+          </div>
+          <div class="stat">
+            <span>Used Memory:</span>
+            <span id="used-memory">0 blocks</span>
+          </div>
+          <div class="stat">
+            <span>Free Memory:</span>
+            <span id="free-memory">100 blocks</span>
+          </div>
+          <div class="stat">
+            <span>Fragmentation:</span>
+            <span id="fragmentation">0%</span>
+          </div>
+          <div class="stat">
+            <span>Last GC Duration:</span>
+            <span id="gc-duration">0 ms</span>
+          </div>
+          <div class="stat">
+            <span>Memory Reclaimed:</span>
+            <span id="memory-reclaimed">0 blocks</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="educational-panel">
+      <h2>How Garbage Collection Works</h2>
+      <div id="gc-explanation">
+        <p>Garbage collection is the process of automatically identifying and reclaiming memory that is no longer in use.</p>
+        <div id="algorithm-info">
+          <h3>Mark and Sweep Algorithm</h3>
+          <p>The Mark and Sweep algorithm works in two phases:</p>
+          <ol>
+            <li><strong>Mark Phase:</strong> The garbage collector identifies all objects that are still in use (referenced) and marks them.</li>
+            <li><strong>Sweep Phase:</strong> The garbage collector scans the entire memory and reclaims any objects that are not marked.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Memory Management Simulator Project</p>
+  </footer>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
